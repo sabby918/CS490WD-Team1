@@ -7,6 +7,11 @@ and open the template in the editor.
     Created on : Oct 24, 2017, 8:35:48 AM
     Author     : ITSupport
 */
+@font-face {
+    font-family: oleo;
+    src: url(../Fonts/Oleo.woff);
+        }
+
 .icons{
     position:relative;
     top:10px;
@@ -88,4 +93,20 @@ and open the template in the editor.
     top:100px;
     color:gray;
     font-size:15px;  
+}
+
+.header .movieImg{
+    height: 50px;
+    width: 50px;
+}
+
+.header{
+    position: realtive;
+    background-color: lightgrey;
+}
+
+.title{
+    position: relative;
+    font-family: oleo;
+    
 }
