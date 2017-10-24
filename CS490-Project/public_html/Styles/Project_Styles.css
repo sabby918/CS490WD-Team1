@@ -11,6 +11,7 @@ and open the template in the editor.
     position:relative;
     top:10px;
     height:40px;
+    border-bottom: 1px solid lightgray;
 }
 
 .icons img{
@@ -88,4 +89,41 @@ and open the template in the editor.
     top:100px;
     color:gray;
     font-size:15px;  
+}
+
+.header {
+    
+    background-color: lightgrey;
+    height: 50px;
+    width: 100%;
+}
+
+.movieImg{
+    float:left;
+    
+    height:50px;
+    width: 50px;
+}
+
+.title{
+    float:left;
+    line-height: 50px;
+    margin-left: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.right{
+  float:right;
+}
+.left{
+ float:left;
+ margin-top: 5px;
+}
+#combo_box{
+    margin-left: 5px;
+}
+
+.photo{
+    top: 20px;
 }
