@@ -17,7 +17,7 @@ CSS:
             <div class='photo'>
                 <img src='{{photo}}'>
                 <div class='description'>{{title}}</div>
-                <div class='date'>{{date}}</div>    
+                <div>{{year}}</div>    
             </div> 
         </script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -26,15 +26,30 @@ CSS:
         <script src="Scripts/script.js"></script>
     </head>
     <body>
+        <div class="header">
+            
+            <img class="movieImg" src="images/movie.png">
+            <div class="title">Rent a Movie</div>
+            
+            
+            
+            
+            
+        </div>
         <div class="icons">
-            <select id="combo_box">
-                <option>description</option>
-                <option>date</option>
+            <div class="left"> Sort By:</div>
+            <select class="left" id="combo_box">
+                <option>rating</option>
+                <option>year</option>
             </select>
+            
+            <div class="right">
             <img id="list_icon" title="list" src="images/list.jpg">
             <img id="grid_icon" title="grid" src="images/grid_pressed.jpg">
+            </div>
         </div>
         <div id="photos" class="grid">
         </div>
     </body>
 </html>
+
