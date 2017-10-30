@@ -5,8 +5,14 @@
  */
 
 $(document).ready(function () {
-    var controller = new Controller(movies["movies"]);
-    
+    var controller = new Controller(movies["movies"])
+    $("#search_box").on('keyup',function(e){
+        e.stopPropagation();
+        search();
+    })
+    $("html").on('click',function(){
+        $("#suggestions_box").hide();
+    });
 });
 
 
@@ -78,4 +84,30 @@ Controller.prototype.make_list = function () {
     $(this.photos_div).attr("class", "list");
     $(this.grid_icon).attr("src", "images/grid.jpg");
     $(this.list_icon).attr("src", "images/list_pressed.jpg");
+};
+
+function search(){
+    var films = movies["movies"];   
+    var html="";
+    var value = $("#search_box").val();
+    var show = false;
+    for (var i=0;i<films.length;++i){
+        var titles = films[i].title.toLowerCase().search(value.toLowerCase().trim());
+        var years = films[i].year.toString().search(value.toString().trim());
+        var stars = films[i].starring.toLowerCase().search(value.toLowerCase().trim());
+        if(titles != -1 || years != -1 || stars != -1)
+        {
+            html+= "<div class='sub_suggestions' id='" + films[i].title + "' >";
+            html+= films[i].title + "(" + films[i].year + "), " + films[i].starring;
+            html+= "</div>";
+            show=true;
+        }
+    }
+    if(show){
+        $("#suggestions_box").html(html);
+        $("#suggestions_box").show();
+        $(".sub_suggestions")
+    }
+    else
+       $("#suggestions_box").hide();
 };

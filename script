@@ -41,7 +41,6 @@ function Controller(data) {
     $(this.combo_box).on('change',sort_photos);
     
     this.load_photos();
-    this.add_stars();
     
 }
 
@@ -81,7 +80,7 @@ Controller.prototype.make_list = function () {
     $(this.movie_list).attr("class", "list");
     $(this.grid_icon).attr("src", "images/grid.jpg");
     $(this.list_icon).attr("src", "images/list_pressed.jpg");
-    
+    this.add_stars();
 };
 
 Controller.prototype.add_stars = function() {
