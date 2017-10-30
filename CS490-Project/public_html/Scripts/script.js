@@ -6,7 +6,7 @@
 
 $(document).ready(function () {
     var controller = new Controller(movies["movies"])
-    $("#search_button").on('click',function(e){
+    $("#search_box").on('keyup',function(e){
         e.stopPropagation();
         search();
     })
@@ -95,26 +95,12 @@ function search(){
         var titles = films[i].title.toLowerCase().search(value.toLowerCase().trim());
         var years = films[i].year.toString().search(value.toString().trim());
         var stars = films[i].starring.toLowerCase().search(value.toLowerCase().trim());
-        if(titles != -1)
+        if(titles != -1 || years != -1 || stars != -1)
         {
             html+= "<div class='sub_suggestions' id='" + films[i].title + "' >";
             html+= films[i].title + "(" + films[i].year + "), " + films[i].starring;
             html+= "</div>";
             show=true;
-        }
-        if(years != -1)
-        {
-            html+= "<div class='sub_suggestions' id='" + films[i].title + "' >";
-            html+= films[i].title + "(" + films[i].year + "), " + films[i].starring;
-            html+= "</div>";
-            show=true;  
-        }
-        if(stars != -1)
-        {
-            html+= "<div class='sub_suggestions' id='" + films[i].title + "' >";
-            html+= films[i].title + "(" + films[i].year + "), " + films[i].starring;
-            html+= "</div>";
-            show=true;  
         }
     }
     if(show){
