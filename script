@@ -41,6 +41,7 @@ function Controller(data) {
     $(this.combo_box).on('change',sort_photos);
     
     this.load_photos();
+    
 }
 
 Controller.prototype.load_photos = function() {
@@ -65,6 +66,7 @@ Controller.prototype.sort_photos=function(){
             );
     
     this.load_photos();
+    
 };
 
 
@@ -78,4 +80,25 @@ Controller.prototype.make_list = function () {
     $(this.movie_list).attr("class", "list");
     $(this.grid_icon).attr("src", "images/grid.jpg");
     $(this.list_icon).attr("src", "images/list_pressed.jpg");
+    this.add_stars();
+};
+
+Controller.prototype.add_stars = function() {
+    var count = 0;
+    var star_html = "";
+    var movie = document.getElementsByClassName("movie");
+    for (var i = 0; i < movie.length; i++){
+        count = parseInt(movie[i].children[3].children[1].innerHTML);
+        star_html ="";
+        for (var j = 0; j < 5; j++) {
+            if (j < count) {
+                star_html += "<div class='star'><img src='images/gold_star.png'></div>"
+            }
+            else {
+                star_html += "<div class='star'><img src='images/regular_star.png'></div>"
+            }
+        }
+        
+        movie[i].children[3].children[1].innerHTML= star_html;
+    }
 };
