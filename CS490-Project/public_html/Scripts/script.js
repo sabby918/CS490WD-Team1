@@ -20,7 +20,7 @@ function Controller(data) {
     this.combo_box="#combo_box";
     this.photo_template="#photo-template";
     this.search_box = "#search_box";
-    this.search_suggestions = "#suggestions_box";
+    this.search_suggestions = ".suggestions";
     this.search_item = ".sub_suggestions";
     
     
@@ -49,11 +49,11 @@ function Controller(data) {
     $(this.list_icon).on("click", make_list_function);
     $(this.combo_box).on('change',sort_photos);
     $(this.search_box).on('keyup',search_films_function);
-    $(this.search_suggestions).children().on('click',select_film_function);
+    $(this.search_suggestions).on('click',select_film_function); //adding children() breaks this when it is needed right now
     
-    /*$("html").on('click',function(){
+    $("html").on('click',function(){
         $("#suggestions_box").hide();
-    });*/
+    });
 
     this.load_photos();
 }
@@ -122,6 +122,6 @@ Controller.prototype.search_films = function(){
 };
 
 Controller.prototype.select_film = function(search_item){
-    var tempTitle = toString(search_item.id);
-    
+    //var tempTitle = toString(search_item.id);
+    document.getElementById("search_box").value = "test";
 }
