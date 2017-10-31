@@ -110,3 +110,8 @@ and open the template in the editor.
     font-family: oleo;
     
 }
+
+.sub_suggestions:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}

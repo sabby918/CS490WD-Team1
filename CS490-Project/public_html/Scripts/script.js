@@ -5,14 +5,7 @@
  */
 
 $(document).ready(function () {
-    var controller = new Controller(movies["movies"])
-    $("#search_box").on('keyup',function(e){
-        e.stopPropagation();
-        search();
-    })
-    $("html").on('click',function(){
-        $("#suggestions_box").hide();
-    });
+    var controller = new Controller(movies["movies"]);
 });
 
 
@@ -26,6 +19,9 @@ function Controller(data) {
     this.list_icon="#list_icon";
     this.combo_box="#combo_box";
     this.photo_template="#photo-template";
+    this.search_box = "#search_box";
+    this.search_suggestions = "#suggestions_box";
+    this.search_item = ".sub_suggestions";
     
     
     //bind some events
@@ -41,11 +37,24 @@ function Controller(data) {
     var sort_photos=function(){
         self.sort_photos.call(self);
     };
+
+    var search_films_function=function(){
+        self.search_films.call(self);
+    };
+    var select_film_function=function(){
+        self.select_film.call(self);
+    }
     
     $(this.grid_icon).on("click", make_grid_function);
     $(this.list_icon).on("click", make_list_function);
     $(this.combo_box).on('change',sort_photos);
+    $(this.search_box).on('keyup',search_films_function);
+    $(this.search_suggestions).children().on('click',select_film_function);
     
+    /*$("html").on('click',function(){
+        $("#suggestions_box").hide();
+    });*/
+
     this.load_photos();
 }
 
@@ -86,7 +95,7 @@ Controller.prototype.make_list = function () {
     $(this.list_icon).attr("src", "images/list_pressed.jpg");
 };
 
-function search(){
+Controller.prototype.search_films = function(){
     var films = movies["movies"];   
     var html="";
     var value = $("#search_box").val();
@@ -111,3 +120,8 @@ function search(){
     else
        $("#suggestions_box").hide();
 };
+
+Controller.prototype.select_film = function(search_item){
+    var tempTitle = toString(search_item.id);
+    
+}
